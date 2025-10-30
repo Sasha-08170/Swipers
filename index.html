@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Наша команда — Swiper</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+  <style>
+    :root{
+      --bg: #0f1720;
+      --card: #0b1220;
+      --muted: #9aa4b2;
+      --accent: #4f46e5;
+      --radius: 12px;
+      --text: #e6eef8;
+      --shadow: 0 6px 18px rgba(2,6,23,0.6);
+    }
+
+    *{
+      box-sizing: border-box;
+      margin:0;
+      padding:0
+    }
+
+    body{
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #071028 0%, #071827 100%);
+      color:var(--text);
+      padding:40px;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .team {
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    .team__header {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:20px;
+    }
+
+    .team__title {
+      font-size:1.5rem;
+      font-weight:600;
+    }
+
+    .team__controls {
+      display:flex;
+      gap:8px;
+    }
+
+    .team__btn {
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.08);
+      color:var(--text);
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .team__btn:hover {
+      background:rgba(255,255,255,0.05);
+    }
+
+    .team-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: var(--shadow);
+      display:flex;
+      align-items:center;
+      gap:16px;
+      transition: transform .3s ease, box-shadow .3s ease;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(2,6,23,0.7);
+    }
+
+    .team-card__photo {
+      width:84px;
+      height:84px;
+      border-radius:10px;
+      overflow:hidden;
+      flex:0 0 84px;
+    }
+
+    .team-card__photo img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    .team-card__body {
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .team-card__name {
+      font-weight:600;
+      font-size:1rem;
+    }
+
+    .team-card__role {
+      color:var(--muted);
+      font-size:.9rem;
+    }
+
+    .team-card__meta {
+      display:flex;
+      gap:10px;
+      font-size:.85rem;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    .team-card__badge {
+      background: rgba(79,70,229,0.15);
+      color:var(--accent);
+      padding:4px 8px;
+      border-radius:999px;
+      font-weight:600;
+      font-size:.78rem;
+    }
+
+    .swiper {
+      padding-bottom:30px;
+    }
+    .swiper-slide {
+      display:flex;
+    }
+
+    .swiper-pagination-bullet {
+      background: rgba(255,255,255,0.2);
+      width:10px;
+      height:10px;
+      opacity:1;
+    }
+    .swiper-pagination-bullet-active {
+      background: var(--accent);
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 899px){
+      .team-card__photo{ width:70px; height:70px; }
+    }
+
+    @media (max-width: 599px){
+      body{ padding:20px }
+      .team__header{ flex-direction:column; align-items:flex-start; gap:10px }
+    }
+  </style>
+</head>
+<body>
+  <main class="team">
+    <div class="team__header">
+      <h2 class="team__title">Наша команда</h2>
+      <div class="team__controls">
+        <button class="team__btn" id="prevBtn">&larr;</button>
+        <button class="team__btn" id="nextBtn">&rarr;</button>
+      </div>
+    </div>
+    <div class="swiper" id="teamSwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide team__slide">
+          <article class="team-card">
+            <div class="team-card__photo">
+              <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=800&auto=format&fit=crop" alt="Марія Коваленко">
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Марія Коваленко</div>
+              <div class="team-card__role">UI/UX дизайнерка</div>
+              <div class="team-card__meta">
+                <span>Figma · Прототипування</span>
+                <span class="team-card__badge">Lead</span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide team__slide">
+          <article class="team-card">
+            <div class="team-card__photo">
+              <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=800&auto=format&fit=crop" alt="Іван Петренко">
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Іван Петренко</div>
+              <div class="team-card__role">Back-end розробник</div>
+              <div class="team-card__meta">
+                <span>Node.js · GraphQL</span>
+                <span class="team-card__badge">Middle</span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide team__slide">
+          <article class="team-card">
+            <div class="team-card__photo">
+              <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=800&auto=format&fit=crop" alt="Наталія Левченко">
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Наталія Левченко</div>
+              <div class="team-card__role">QA інженерка</div>
+              <div class="team-card__meta">
+                <span>Cypress · Автоматизація</span>
+                <span class="team-card__badge">Middle</span>
+              </div>
+            </div>
+          </article>
+        </div>
+         <div class="swiper-slide team__slide">
+          <article class="team-card">
+            <div class="team-card__photo">
+              <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=800&auto=format&fit=crop" alt="Марія Коваленко">
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Марія Коваленко</div>
+              <div class="team-card__role">UI/UX дизайнерка</div>
+              <div class="team-card__meta">
+                <span>Figma · Прототипування</span>
+                <span class="team-card__badge">Lead</span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide team__slide">
+          <article class="team-card">
+            <div class="team-card__photo">
+              <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=800&auto=format&fit=crop" alt="Іван Петренко">
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Іван Петренко</div>
+              <div class="team-card__role">Back-end розробник</div>
+              <div class="team-card__meta">
+                <span>Node.js · GraphQL</span>
+                <span class="team-card__badge">Middle</span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="swiper-slide team__slide">
+          <article class="team-card">
+            <div class="team-card__photo">
+              <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=800&auto=format&fit=crop" alt="Наталія Левченко">
+            </div>
+            <div class="team-card__body">
+              <div class="team-card__name">Наталія Левченко</div>
+              <div class="team-card__role">QA інженерка</div>
+              <div class="team-card__meta">
+                <span>Cypress · Автоматизація</span>
+                <span class="team-card__badge">Middle</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper('#teamSwiper', {
+      slidesPerView: 3,
+      spaceBetween: 18,
+      loop: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        0: { slidesPerView: 1, spaceBetween: 12 },
+        600: { slidesPerView: 2, spaceBetween: 14 },
+        900: { slidesPerView: 3, spaceBetween: 18 }
+      }
+    });
+    document.getElementById('prevBtn').addEventListener('click', () => swiper.slidePrev());
+    document.getElementById('nextBtn').addEventListener('click', () => swiper.slideNext());
+  </script>
+</body>
+</html>
+
